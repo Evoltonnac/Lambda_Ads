@@ -1,0 +1,17 @@
+{
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        ".svn",
+        "node_modules/**/node_modules",
+        "lambda.js",
+        ".yml"
+    ],
+    "execMap": {
+        "js": "node --harmony"
+    },
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "js json"
+}

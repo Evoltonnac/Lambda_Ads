@@ -1,0 +1,30 @@
+{
+  "name": "lambda_ads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.7",
+    "serverless-http": "^2.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "node app.local.js",
+    "dev": "cross-env NODE_ENV=development && nodemon app.local.js",
+    "prod": "cross-env NODE_ENV=production && node app.local.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "cross-env NODE_ENV=production && serverless deploy",
+    "genDoc": "cross-env NODE_ENV=development node helpers/generate.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
