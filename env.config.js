@@ -18,7 +18,7 @@ const config = {
     },
     production: {
         MONGODB_Path: 'mongodb+srv://root:root@aws-lambda-hsvxv.mongodb.net/test?retryWrites=true&w=majority',
-        CORS_ORIGIN: /lambda-ads-web-[0-9a-zA-Z]*\.now\.sh/,
+        CORS_ORIGIN: /lambda-ads-web.*\.now\.sh/,
     }
 }
 
