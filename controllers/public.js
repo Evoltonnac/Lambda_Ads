@@ -4,7 +4,10 @@ const Record = require('../models/record')
 const Advertise = require('../models/advertise')
 const Charge = require('../models/charge')
 const {
-  ad_select
+  AdSelector,
+  AppAuth,
+  AdQuery,
+  RandomSelect
 } = require('../helpers/public')
 const {
   statistic
@@ -15,14 +18,29 @@ router.post('/serverlessAds', async (req, res, next) => {
     appId,
     secret,
     advertiseId,
+    events,
     viewer
   } = req.body
+  // 实例化选择器
+  const adSelector = new AdSelector({
+    appId,
+    secret,
+    advertiseId,
+    events,
+    viewer
+  })
+  adSelector.use(AppAuth)
+  adSelector.use(AdQuery)
+  adSelector.use(RandomSelect)
+  const selectResult = await adSelector.exec().catch(function (err) {
+    next(err)
+  })
   const {
     title,
     tags,
     resources,
     _id
-  } = await ad_select(next, appId, secret, advertiseId, viewer)
+  } = selectResult
 
   // 创建一个新的view记录
   const newRecord = new Record({
