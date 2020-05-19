@@ -38,7 +38,7 @@ router.post('/login', [
     next()
 })
 
-router.post('/register', [
+router.post('/registry', [
     // 用户名校验
     check('username').isEmail().withMessage('用户名必须是一个有效邮箱'),
     // 密码校验
